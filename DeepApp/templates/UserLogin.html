@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Fake</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="top-navbar">
+        <a href="index.html">Home</a>
+        <a href="UserLogin.html">User Login Here</a>
+    </div>
+
+    <div class="main-container">
+        <div class="diagram-card">
+            <img src="{% static 'images/diagram.png' %}" alt="Deepfake Detection Architecture Diagram">
+        </div>
+
+        <div class="content-box" style="max-width: 480px; margin: 25px auto;">
+            <h3 align="center" style="margin-top: 0; color: #37474f; font-size: 20px;">User Login Screen</h3>
+            
+            {% if data %}
+                <div align="center" style="margin-bottom: 15px;">
+                    <font color="red" style="font-weight: bold;">{{ data }}</font>
+                </div>
+            {% endif %}
+
+            <form action="UserLoginAction" method="post">
+                {% csrf_token %}
+                <table style="border: none; margin: 0 auto; width: 100%;">
+                    <tr style="background: none;">
+                        <td style="border: none; font-weight: 600; width: 35%; text-align: right; padding-right: 15px;">Username:</td>
+                        <td style="border: none;">
+                            <input type="text" name="t1" value="admin" class="input-text" required style="width: 100%;">
+                        </td>
+                    </tr>
+                    <tr style="background: none;">
+                        <td style="border: none; font-weight: 600; text-align: right; padding-right: 15px;">Password:</td>
+                        <td style="border: none;">
+                            <input type="password" name="t2" value="admin" class="input-text" required style="width: 100%;">
+                        </td>
+                    </tr>
+                    <tr style="background: none;">
+                        <td style="border: none;"></td>
+                        <td style="border: none; padding-top: 15px;">
+                            <input type="submit" value="Login" style="width: 100%;">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <p align="center" style="margin-top: 18px; font-size: 13px; color: #78909c;">
+                Default Credentials: <b>admin / admin</b>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

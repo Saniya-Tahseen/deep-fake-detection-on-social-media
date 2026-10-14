@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Fake</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="top-navbar">
+        <a href="LoadDataset">Load Dataset</a>
+        <a href="FastText">Fast Text Embedding</a>
+        <a href="TrainML">Run All Algorithms</a>
+        <a href="DetectFake.html">Predict Deep Fake</a>
+        <a href="index.html">Logout</a>
+    </div>
+
+    <div class="main-container">
+        <div class="diagram-card">
+            <img src="{% static 'images/diagram.png' %}" alt="Deepfake Detection Architecture Diagram">
+        </div>
+
+        <div class="content-box" style="text-align: center; max-width: 800px;">
+            <h3 style="color: #2e7d32; margin-top: 5px;">{{ data }}</h3>
+            <p style="color: #455a64; font-size: 15px; line-height: 1.6;">
+                You have successfully authenticated into the <b>Social Media Deep Fake Detection System</b>. 
+                Use the navigation menu above to access all modules:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 25px; text-align: left;">
+                <div style="background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 15px;">
+                    <h4 style="margin: 0 0 8px 0; color: #6a1b9a;">📁 1. Load Dataset</h4>
+                    <p style="font-size: 13px; color: #666; margin: 0 0 12px 0;">View raw tweets and metadata from the TweepFake benchmark dataset.</p>
+                    <a href="LoadDataset" class="btn-primary" style="text-decoration: none; font-size: 12px; padding: 6px 14px; display: inline-block;">Load Data</a>
+                </div>
+
+                <div style="background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 15px;">
+                    <h4 style="margin: 0 0 8px 0; color: #1565c0;">🔢 2. Fast Text Embedding</h4>
+                    <p style="font-size: 13px; color: #666; margin: 0 0 12px 0;">Inspect the vectorized subword feature matrix generated from tweet tokens.</p>
+                    <a href="FastText" class="btn-primary" style="text-decoration: none; font-size: 12px; padding: 6px 14px; display: inline-block;">View Embeddings</a>
+                </div>
+
+                <div style="background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 15px;">
+                    <h4 style="margin: 0 0 8px 0; color: #2e7d32;">📊 3. Run All Algorithms</h4>
+                    <p style="font-size: 13px; color: #666; margin: 0 0 12px 0;">Evaluate Naive Bayes, Decision Tree, CNN, and Hybrid CNN with full metric charts.</p>
+                    <a href="TrainML" class="btn-primary" style="text-decoration: none; font-size: 12px; padding: 6px 14px; display: inline-block;">Train & Compare</a>
+                </div>
+
+                <div style="background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 15px;">
+                    <h4 style="margin: 0 0 8px 0; color: #c2185b;">🔍 4. Predict Deep Fake</h4>
+                    <p style="font-size: 13px; color: #666; margin: 0 0 12px 0;">Test unseen tweets live and predict whether they were authored by Bot or Human.</p>
+                    <a href="DetectFake.html" class="btn-primary" style="text-decoration: none; font-size: 12px; padding: 6px 14px; display: inline-block;">Test Tweets</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

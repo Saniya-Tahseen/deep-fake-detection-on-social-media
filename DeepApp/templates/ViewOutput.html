@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Fake</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="top-navbar">
+        <a href="LoadDataset">Load Dataset</a>
+        <a href="FastText">Fast Text Embedding</a>
+        <a href="TrainML">Run All Algorithms</a>
+        <a href="DetectFake.html">Predict Deep Fake</a>
+        <a href="index.html">Logout</a>
+    </div>
+
+    <div class="main-container">
+        <div class="diagram-card">
+            <img src="{% static 'images/diagram.png' %}" alt="Deepfake Detection Architecture Diagram">
+        </div>
+
+        <div style="max-width: 1100px; margin: 15px auto;">
+            {% if title %}
+                <h3 align="center" style="color: #37474f; font-size: 20px; margin-bottom: 20px;">{{ title }}</h3>
+            {% endif %}
+
+            {% if 'matrix' in title|lower or 'fast text' in title|lower or 'embedding' in title|lower %}
+                <div class="matrix-output">
+                    {{ data }}
+                </div>
+            {% else %}
+                <div style="background: #ffffff; border: 1px solid #cccccc; border-radius: 4px; overflow-x: auto; max-height: 550px;">
+                    {{ data|safe }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

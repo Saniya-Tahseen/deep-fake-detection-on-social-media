@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Fake</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="top-navbar">
+        <a href="LoadDataset">Load Dataset</a>
+        <a href="FastText">Fast Text Embedding</a>
+        <a href="TrainML">Run All Algorithms</a>
+        <a href="DetectFake.html">Predict Deep Fake</a>
+        <a href="index.html">Logout</a>
+    </div>
+
+    <div class="main-container">
+        <div class="diagram-card">
+            <img src="{% static 'images/diagram.png' %}" alt="Deepfake Detection Architecture Diagram">
+        </div>
+
+        <h3 align="center" style="color: #263238; font-size: 20px; margin-top: 20px; font-weight: bold;">
+            Tweet Testing Screen
+        </h3>
+
+        {% if data %}
+            <div align="center" style="margin: 15px 0;">
+                <font color="red" size="4" style="font-weight: bold;">{{ data }}</font>
+                {% if algorithm_used %}
+                    <div style="margin-top: 6px;">
+                        <span style="background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 600;">
+                            🏆 Evaluated by: {{ algorithm_used }} | Confidence: {{ confidence }}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="content-box" style="max-width: 680px; margin: 15px auto;">
+            <form action="DetectFakeAction" method="post">
+                {% csrf_token %}
+                <table style="border: none; margin: 0 auto; width: 100%;">
+                    <tr style="background: none;">
+                        <td style="border: none; font-weight: 600; vertical-align: top; width: 25%; padding-top: 8px;">
+                            Enter Tweet:
+                        </td>
+                        <td style="border: none;">
+                            <textarea name="t1" rows="4" class="input-text" required placeholder="Type or paste tweet text here to verify authenticity...">{{ entered_tweet|default:'' }}</textarea>
+                        </td>
+                    </tr>
+                    <tr style="background: none;">
+                        <td style="border: none;"></td>
+                        <td style="border: none; padding-top: 15px;">
+                            <input type="submit" value="Submit">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid #eeeeee;">
+                <p style="font-size: 13px; color: #546e7a; margin-bottom: 8px;"><b>Quick Test Samples:</b></p>
+                <button type="button" onclick="setTweet('and development application some the latest and the ready to heares')" style="font-size: 12px; padding: 5px 10px; margin: 3px; background: #eceff1; color: #37474f; border: 1px solid #cfd8dc; border-radius: 3px; cursor: pointer;">
+                    Bot Sample (From Document)
+                </button>
+                <button type="button" onclick="setTweet('matrix 2: pedaphile killer')" style="font-size: 12px; padding: 5px 10px; margin: 3px; background: #eceff1; color: #37474f; border: 1px solid #cfd8dc; border-radius: 3px; cursor: pointer;">
+                    Human Sample
+                </button>
+                <button type="button" onclick="setTweet('YEA now that note GOOD')" style="font-size: 12px; padding: 5px 10px; margin: 3px; background: #eceff1; color: #37474f; border: 1px solid #cfd8dc; border-radius: 3px; cursor: pointer;">
+                    Bot Sample 2
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setTweet(text) {
+            document.querySelector("textarea[name='t1']").value = text;
+        }
+    </script>
+</body>
+</html>

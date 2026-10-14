@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Fake</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="top-navbar">
+        <a href="LoadDataset">Load Dataset</a>
+        <a href="FastText">Fast Text Embedding</a>
+        <a href="TrainML">Run All Algorithms</a>
+        <a href="DetectFake.html">Predict Deep Fake</a>
+        <a href="index.html">Logout</a>
+    </div>
+
+    <div class="main-container">
+        <div class="diagram-card">
+            <img src="{% static 'images/diagram.png' %}" alt="Deepfake Detection Architecture Diagram">
+        </div>
+
+        <h3 align="center" style="color: #263238; font-size: 21px; margin-top: 25px; margin-bottom: 15px; font-weight: bold;">
+            Comparison Graph Screen Screen
+        </h3>
+
+        <div style="max-width: 1050px; margin: 0 auto; background: #ffffff; border: 1px solid #cccccc; border-radius: 4px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+            {{ data|safe }}
+        </div>
+
+        {% if img %}
+            <div style="text-align: center; margin: 30px auto; max-width: 950px; background: #ffffff; border: 1px solid #cccccc; border-radius: 4px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                <img src="data:image/png;base64,{{ img }}" alt="All Algorithms Performance Graph" style="max-width: 100%; height: auto;">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
