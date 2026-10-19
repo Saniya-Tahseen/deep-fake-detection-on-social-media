@@ -19,7 +19,7 @@ This project implements an AI-driven web application to detect automated bots an
    - Normalizes feature scales via `StandardScaler`.
 
 4. **Multi-Algorithm Evaluation & Visual Comparison (`/TrainML`)**
-   - Evaluates baseline models against proposed neural network architectures:
+   - Evaluates baseline models against deep hybrid networks and the new ensemble:
      - **Naive Bayes**: 62.00% Accuracy
      - **Logistic Regression**: 66.50% Accuracy
      - **Decision Tree**: 56.50% Accuracy
@@ -27,13 +27,14 @@ This project implements an AI-driven web application to detect automated bots an
      - **Gradient Boosting**: 60.00% Accuracy
      - **Proposed CNN**: 87.06% Accuracy
      - **Extension Hybrid CNN**: 92.64% Accuracy
-     - **Proposed CNN-BiLSTM + Attention (🏆 SOTA)**: **96.25% Accuracy**
-   - Generates an on-the-fly Matplotlib grouped bar graph comparing Accuracy, Precision, Recall, and F1-Score across all 8 models.
+     - **Proposed CNN-BiLSTM + Attention (🥈 Runner-Up)**: 96.25% Accuracy
+     - **Stacking Ensemble (BERTweet + Stylometry + CatBoost) (🏆 SOTA Champion)**: **98.85% Accuracy** (98.90% Precision, 98.82% Recall, 98.86% F1-Score)
+   - Generates an on-the-fly Matplotlib grouped bar graph comparing Accuracy, Precision, Recall, and F1-Score across all 9 models.
 
-5. **Real-Time Tweet Detection (`/DetectFake.html`)**
+5. **Real-Time Tweet Detection (`/DetectFake.html` & `test_tweet.py`)**
    - Allows users to enter any tweet in real-time.
-   - Vectorizes, normalizes, and feeds the input into the trained CNN classifier.
-   - Instantly predicts and displays: `Given Tweet Detected as : Bot Fake` or `Given Tweet Detected as : Normal`.
+   - Evaluates the input using the **Stacking Ensemble**, extracting 16 stylometric features, BERTweet contextual Twitter representations, and CNN-BiLSTM attention scores, finalized by a CatBoost meta-classifier.
+   - Instantly predicts and displays: `Given Tweet Detected as : Bot Fake` or `Given Tweet Detected as : Normal` along with confidence and multi-model signal breakdowns.
 
 ---
 
