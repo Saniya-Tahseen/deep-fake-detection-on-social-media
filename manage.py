@@ -3,6 +3,11 @@
 import os
 import sys
 
+base_dir = os.path.dirname(os.path.abspath(__file__))
+os.environ.setdefault('KERAS_HOME', os.path.join(base_dir, '.keras'))
+os.environ.setdefault('MPLCONFIGDIR', os.path.join(base_dir, '.matplotlib'))
+os.environ.setdefault('HF_HOME', os.path.join(base_dir, '.cache', 'huggingface'))
+
 
 def main():
     """Run administrative tasks."""

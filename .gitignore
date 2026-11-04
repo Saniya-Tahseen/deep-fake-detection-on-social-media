@@ -1,0 +1,16 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Framework and library runtime caches
+.keras/
+.matplotlib/
+.cache/
+catboost_info/
+
+# Operating system files
+desktop.ini
+Thumbs.db
+.DS_Store
